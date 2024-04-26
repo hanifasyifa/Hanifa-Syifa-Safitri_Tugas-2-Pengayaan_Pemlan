@@ -24,8 +24,13 @@ public class Kasir {
         //EDIT DISINI
         System.out.println("Daftar meja:");
         for (int i = 1; i <= daftarMeja.length; i++) {
-            String statusMeja = daftarMeja[i].isKosong() ? "kosong" : "terisi";
-            System.out.println("Meja " + i + " (" + statusMeja + ")");
+            Meja mejaTampil = daftarMeja[i];
+            if (daftarMeja[i].isKosong()){
+                System.out.println("Meja "+(i+1)+" (kosong)");
+            } else{
+                Pelanggan pelanggan = mejaTampil.getPelanggan();
+                System.out.println("Meja "+(i+1)+" (terisi oleh pelanggan "+pelanggan.getNama() + ")");
+            }
         }
     }
 
@@ -182,7 +187,7 @@ public class Kasir {
                     }
                 }
                 else {
-                    System.out.println("Meja tidak ada pelanggan");
+                    System.out.println("Meja belum terisi oleh pelanggan");
                 }
                 break;
                 case 4:
